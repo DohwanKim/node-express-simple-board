@@ -4,8 +4,9 @@ import cors from 'cors';
 import morgan from 'morgan';
 import chalk from 'chalk';
 import postController from './controllers/postController.js';
+import pageController from './controllers/pageController.js';
 
-const PORT = 4001; //static 고정들은 대문자 써주기
+const PORT = 4000;
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(express.static('public'));
 app.use(cors());
 app.use(morgan('dev'));
 
-app.use('/', postController);
+app.use('/', pageController);
+app.use('/post', postController);
 
-app.listen(PORT, () => console.log(chalk.black.bgBlue `Example app listening on port ${PORT}!`));
+app.listen(process.env.PORT || PORT, () => console.log(chalk.whiteBright.bgBlue(`Example app listening on port ${PORT}!`)));

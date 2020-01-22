@@ -2,15 +2,13 @@ import { Router } from 'express';
 
 let router = Router();
 
+
 router.use((req, res, next) => {
   next();
 });
 
-router.post('/post', (req, res) => {
-  let userData;
-  let postData;
-
-  res.send();
+router.get('', (req, res) => {
+  res.render('index.html');
 });
 
 export default router;

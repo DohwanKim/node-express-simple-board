@@ -2,67 +2,87 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>DohwanKim's Lab</title>
-
-  <!-- jQuery CDN for bootstrap -->
-  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-  <!-- bootstrap CDN -->
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
-  <!-- my CSS -->
+  <title>Simple Notice Board</title>
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+          crossorigin="anonymous"></script>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+          integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+          crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"
+          integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm"
+          crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
-
 <body>
-<div class="container" id="id__test">
-  <div class="row">
-    <div class="col border-b">
-      유저 데이터 (데이터 가져오는 곳) ->
-    </div>
-    <div class="col">
-      아이디 : <span class="text-primary">windboy</span>
-    </div>
-    <div class="col">
-      닉네임 : <span class="text-primary">kimdonggle</span>
-    </div>
-    <div class="col">
-      다른 정보 : <span class="text-primary">etc</span>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col border-b">
-      <textarea class="" placeholder="제목"></textarea>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <textarea class="" placeholder="글내용"></textarea>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col text-right" style="margin-top: 10px">
-      <button type="button" class="btn btn-primary">저장</button>
-      <button type="button" class="btn btn-secondary">취소</button>
-    </div>
-  </div>
-  <div class="row border" style="margin-top: 20px">
-    <div class="col">
-      <!-- 작성글 나오는 곳-->
-      <div class="row">
-        <div class="col">
-          제목
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-1">
+        아이디 :
       </div>
-      <div class="row">
-        <div class="col">
-          내용
-        </div>
+      <div class="col">
+        <textarea class="input" placeholder="아이디" id="userData_id"></textarea>
+      </div>
+      <div class="col-1">
+        닉네임 :
+      </div>
+      <div class="col">
+        <textarea class="input" placeholder="닉네임" id="userData_nick"></textarea>
+      </div>
+      <div class="col-1">
+        비번 :
+      </div>
+      <div class="col">
+        <textarea class="input" placeholder="비밀번호" id="userData_pw"></textarea>
       </div>
     </div>
+    <div class="row">
+      <div class="col border-b">
+        <textarea class="" placeholder="제목" id="post_title"></textarea>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <textarea class="" placeholder="글내용" id="post_contents"></textarea>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col text-right" style="margin-top: 10px">
+        <button type="button" class="btn btn-primary" id="post_summit">저장</button>
+        <button type="button" class="btn btn-secondary" id="post_cancel">취소</button>
+      </div>
+    </div>
+    <div class="row" style="margin-top: 20px">
+      <div class="col" id="post_area">
+        <!-- 작성글 나오는 곳-->
+        <div class="row border-bottom">
+          <div class="col" style="margin-bottom: 5px">
+            <h2>제목</h2>
+          </div>
+          <div class="col-3">
+            <div class="row">
+              <div class="col">
+                <span class="text-primary">nick: </span>
+                <span class="text-secondary">닉네임</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <span class="text-info">id: </span>
+                <span class="text-secondary">아이디</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col" style="margin-bottom: 30px">
+            내용
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
-
-<script type="module" src="js/App.js"></script>
+  <script type="module" src="js/App.js"></script>
 </body>
 </html>
