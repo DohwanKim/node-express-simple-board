@@ -1,18 +1,73 @@
-import Sequelize from 'sequelize';
-import mysql from 'mysql';
+const Sequelize = require('sequelize');
 
-const PORT = 4000;
-
-let connection = mysql.createConnection({
-  host     : 'localhost',    // 호스트 주소
-  user     : 'me',           // mysql user
-  password : 'secret',       // mysql password
-  database : 'my_db'         // mysql 데이터베이스
+// Option 1: Passing parameters separately
+const sequelize = new Sequelize('authDB', 'root', 'ehdrmf12', {
+  dialect: 'mysql',
+  host: 'localhost',
+  port: '3306'
 });
-connection.connect();
-connection.query('SELECT 1 + 1 AS solution',
-  function (error, results, fields) {
-    if (error) throw error;
-    console.log('The solution is: ', results[0].solution);
+
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('Connection has been established successfully.');
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:', err);
   });
-connection.end();
+
+const Post = sequelize.define('Post', {
+  ID: {
+    type: Sequelize.STRING,
+    primaryKey: true,
+  },
+  PW: {
+    type: Sequelize.STRING,
+    allowNull: true
+  },
+  Nick: {
+    type: Sequelize.STRING,
+    allowNull: true
+  },
+  Title: {
+    type: Sequelize.TEXT,
+    allowNull: true
+  },
+  Contents: {
+    type: Sequelize.TEXT,
+    allowNull: true
+  }
+},{
+  modelName: 'Post'
+});
+
+sequelize.sync();
+
+export const getPostData = async () => {
+  return Post.findAll();
+};
+
+export const createPostData = async (data) => {
+  Post.create({ ID: data.id, PW: data.pw, Nick: data.nick, Title: data.title, Contents: data.contents });
+  console.log('create work');
+};
+
+export const deletePostData = async (id) => {
+  Post.destroy({
+    where: {
+      ID: id
+    }
+  });
+
+  console.log("Delete Done");
+};
+
+export const updataPostData = async (data) => {
+  Post.update({ Title: data.title, Contents: data.contents }, {
+    where: {
+      ID: data.id
+    }
+  }).then(() => {
+    console.log("Done");
+  });
+};
