@@ -1,7 +1,10 @@
+import { getSQLInfo } from "./secure.js";
 const Sequelize = require('sequelize');
 
+const data = getSQLInfo();
+
 // Option 1: Passing parameters separately
-const sequelize = new Sequelize('authDB', 'root', 'ehdrmf12', {
+const sequelize = new Sequelize(data.name, data.id, data.pw, {
   dialect: 'mysql',
   host: 'localhost',
   port: '3306'
@@ -58,7 +61,6 @@ export const deletePostData = async (id) => {
       ID: id
     }
   });
-
   console.log("Delete Done");
 };
 
@@ -67,7 +69,6 @@ export const updataPostData = async (data) => {
     where: {
       ID: data.id
     }
-  }).then(() => {
-    console.log("Done");
   });
+  console.log("update Done");
 };

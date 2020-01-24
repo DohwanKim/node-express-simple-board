@@ -23,4 +23,4 @@ app.use(morgan('dev'));
 app.use('/', pageController);
 app.use('/post', postController);
 
-app.listen(process.env.PORT || PORT, () => console.log(chalk.whiteBright.bgBlue(`Example app listening on port ${PORT}!`)));
+app.listen(process.env.PORT || PORT, () => console.log(chalk.blueBright.bgBlack(`Example app listening on port ${PORT}!`)));

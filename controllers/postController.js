@@ -17,7 +17,7 @@ router.post('/create', async (req, res) => {
   console.log(req);
 
   // await createPostData();
-  res.send('create User');
+  res.send('create Post');
 });
 
 router.post('/update', async (req, res) => {
