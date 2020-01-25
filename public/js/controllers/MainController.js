@@ -3,7 +3,7 @@ import cancelBtnView from "../views/cancelBtnView.js";
 import postView from "../views/postView.js";
 import { getPostData } from "../api/postAPI.js"
 
-let saveArr = [];
+let POST_DATA = [];
 const EX_DATA = [
   {
     id: 'windboy',
@@ -34,23 +34,22 @@ export default {
     cancelBtnView.setup(document.getElementById('post_cancel')).on('@cancel', (evt)=>{
       this.clearPost();
     });
-    postView.setup(document.getElementById('post_area')).render(EX_DATA);
+    postView.setup(document.getElementById('post_area'));
+    this.getAllPostData();
+  },
+  getAllPostData() {
+    getPostData('/get', function (data) {
+      POST_DATA = data;
+      postView.render(POST_DATA);
+    });
   },
   submitPost() {
-    let test;
-
-    getPostData('/get', function (data) {
-      let arr = data;
-      $.each(data, (i, v) => {
-        console.log(v);
-        //saveArr.push(v);
-      });
-      saveArr = data;
-      doFunctionWithArray();
-    });
   },
   clearPost() {
     cancelBtnView.clear();
     console.log('cancel and clear all form data');
+  },
+  renderPost() {
+
   },
 }
