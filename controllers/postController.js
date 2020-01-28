@@ -9,15 +9,12 @@ router.use((req, res, next) => {
 
 router.get('/get', async (req, res) => {
   let postData = await getPostData();
-  console.log('리턴된 데이터 :', postData);
   res.send(postData);
 });
 
 router.post('/create', async (req, res) => {
-  console.log(req);
-
-  // await createPostData();
-  res.send('create Post');
+  await createPostData(req.body);
+  res.send('created');
 });
 
 router.post('/update', async (req, res) => {

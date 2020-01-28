@@ -20,23 +20,29 @@ sequelize
   });
 
 const Post = sequelize.define('Post', {
-  ID: {
-    type: Sequelize.STRING,
+  idPost: {
+    type: Sequelize.INTEGER,
+    autoIncrement: true,
     primaryKey: true,
+    allowNull: false
   },
-  PW: {
+  postId: {
     type: Sequelize.STRING,
     allowNull: true
   },
-  Nick: {
+  postPw: {
     type: Sequelize.STRING,
     allowNull: true
   },
-  Title: {
+  postNick: {
+    type: Sequelize.STRING,
+    allowNull: true
+  },
+  postTitle: {
     type: Sequelize.TEXT,
     allowNull: true
   },
-  Contents: {
+  postContents: {
     type: Sequelize.TEXT,
     allowNull: true
   }
@@ -51,23 +57,23 @@ export const getPostData = async () => {
 };
 
 export const createPostData = async (data) => {
-  Post.create({ ID: data.id, PW: data.pw, Nick: data.nick, Title: data.title, Contents: data.contents });
+  Post.create({ idPost: 0, postId: data.postId, postPw: data.postPw, postNick: data.postNick, postTitle: data.postTitle, postContents: data.postContents });
   console.log('create work');
 };
 
-export const deletePostData = async (id) => {
+export const deletePostData = async (idPost) => {
   Post.destroy({
     where: {
-      ID: id
+      idPost: idPost
     }
   });
   console.log("Delete Done");
 };
 
-export const updataPostData = async (data) => {
-  Post.update({ Title: data.title, Contents: data.contents }, {
+export const updataPostData = async (idPost, data) => {
+  Post.update({ postTitle: data.postData, postContents: data.postContents }, {
     where: {
-      ID: data.id
+      idPost: data.idPost
     }
   });
   console.log("update Done");

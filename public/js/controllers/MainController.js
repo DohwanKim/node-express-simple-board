@@ -1,29 +1,8 @@
 import submitBtnView from "../views/submitBtnView.js";
 import cancelBtnView from "../views/cancelBtnView.js";
 import postView from "../views/postView.js";
-import { getPostData } from "../api/postAPI.js"
-
-let POST_DATA = [];
-const EX_DATA = [
-  {
-    id: 'windboy',
-    nick: 'donggle',
-    title: '이게 맞나요?',
-    contents: 'ㄴㄴㅇㄹㄴㅇㄹㄹ럴이ㅏㅓㅣㅏㄴ러ㅣㅏㄴ어ㅣ린어리ㅓㄴ이라ㅣㄴ얼'
-  },
-  {
-    id: 'tkdgjs',
-    nick: 'winnig',
-    title: 'tips',
-    contents: 'ㄴㄴㅇㄹㄴㅇㄹㄹ럴이ㅏㅓㅣㅏㄴ러ㅣㅏㄴ어ㅣ린어리ㅓㄴ이라ㅣsfdsfㄴ얼'
-  },
-  {
-    id: 'ehdn',
-    nick: 'dow',
-    title: '질문있음요',
-    contents: 'sfdfsdfㄴㄴㅇㄹㄴㅇㄹㄹ럴이ㅏㅓㅣㅏㄴ러ㅣㅏㄴ어ㅣ린어리ㅓㄴ이라ㅣㄴ얼'
-  }
-];
+import postModel from "../models/postModel.js"
+import { getPostData, uploadPostData } from "../api/postAPI.js"
 
 export default {
   init() {
@@ -38,18 +17,22 @@ export default {
     this.getAllPostData();
   },
   getAllPostData() {
-    getPostData('/get', function (data) {
-      POST_DATA = data;
-      postView.render(POST_DATA);
+    getPostData(function (data) {
+      console.log(data);
+      postView.render(data);
     });
   },
   submitPost() {
+    let res = submitBtnView.getInputPostData();
+    cancelBtnView.clear();
+    postModel.setInputPost(res);
+    uploadPostData(postModel.getData(),function () {
+      getPostData(function (data) {
+        postView.render(data);
+      });
+    });
   },
   clearPost() {
     cancelBtnView.clear();
-    console.log('cancel and clear all form data');
-  },
-  renderPost() {
-
   },
 }

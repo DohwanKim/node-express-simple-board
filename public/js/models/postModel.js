@@ -1,21 +1,35 @@
-const postData = {
-  id: '',
-  nick: '',
-  pw: '',
-  title: '',
-  contents: ''
+let postModel = {
+  postData : {
+    idPost: 0,
+    postId: '',
+    postPw: '',
+    postNick: '',
+    postTitle: '',
+    postContents: '',
+    createdAt: '',
+    updatedAt: '',
+  }
 };
 
-postData.post = function () {
-  this.id = document.getElementById('userData_id').value;
-  this.nick = document.getElementById('userData_nick').value;
-  this.pw = document.getElementById('userData_pw').value;
-  this.title = document.getElementById('post_summit').value;
-  this.contents = document.getElementById('post_cancel').value;
+postModel.setInputPost = function (data) {
+  console.log('data연결: ', data);
+  this.postData.postId = data[0];
+  this.postData.postPw = data[1];
+  this.postData.postNick = data[2];
+  this.postData.postTitle = data[3];
+  this.postData.postContents = data[4];
 };
 
-postData.get = function () {
-
+postModel.getData = function() {
+  return this.postData;
 };
 
-export default postData;
+postModel.DataClear = function () {
+  this.postData.postId = '';
+  this.postData.postPw = '';
+  this.postData.postNick = '';
+  this.postData.postTitle = '';
+  this.postData.postContents = '';
+};
+
+export default postModel;

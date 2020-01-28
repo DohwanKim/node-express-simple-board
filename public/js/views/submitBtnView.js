@@ -16,4 +16,15 @@ submitBtnView.bindEvent = function () {
   })
 };
 
+submitBtnView.getInputPostData = function () {
+  let res = [];
+  res.push(document.getElementById('userData_id').value);
+  res.push(document.getElementById('userData_pw').value);
+  res.push(document.getElementById('userData_nick').value);
+  res.push(document.getElementById('post_title').value);
+  res.push(document.getElementById('post_contents').value);
+
+  return res;
+};
+
 export default submitBtnView;
