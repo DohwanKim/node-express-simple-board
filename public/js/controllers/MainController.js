@@ -1,8 +1,14 @@
 import submitBtnView from "../views/submitBtnView.js";
 import cancelBtnView from "../views/cancelBtnView.js";
+import deleteBtnView from "../views/deleteBtnView.js";
 import postView from "../views/postView.js";
 import postModel from "../models/postModel.js"
 import { getPostData, uploadPostData } from "../api/postAPI.js"
+
+
+// TODO : 삭제 기능, 수정 기능, <- (해당 글의 비밀번호 일치 검사) 글 올렸을때 다시 렌더링 잘 되는지.
+// TODO : 비밀번호 암호화, 될 수 있으면 테스트 작성 까지. (jest)
+// TODO : 프론트 단에서 유효성 검사 해주기. -> 아이디, 비밀번호 양
 
 export default {
   init() {
@@ -18,8 +24,11 @@ export default {
   },
   getAllPostData() {
     getPostData(function (data) {
-      console.log(data);
       postView.render(data);
+
+      for(let i=0; i<data.length; i++) {
+        deleteBtnView.setup(i+1); //add events multi delete buttons
+      }
     });
   },
   submitPost() {
@@ -35,4 +44,8 @@ export default {
   clearPost() {
     cancelBtnView.clear();
   },
+
+  postViewDelBtn() {
+
+  }
 }

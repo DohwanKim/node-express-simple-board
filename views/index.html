@@ -18,29 +18,20 @@
 </head>
 <body>
   <div class="container">
-    <div class="row">
-      <div class="col-1">
-        아이디 :
+    <div class="row" style="margin-bottom: 20px">
+      <div class="col-md-4 col-sm-12" style="padding-left: 0; margin-top: 20px;">
+        <input type="text" name="id" class="input" placeholder="아이디" id="userData_id"/>
       </div>
-      <div class="col">
-        <textarea class="input" placeholder="아이디" id="userData_id"></textarea>
+      <div class="col-md-4 col-sm-12" style="padding: 0; margin-top: 20px;">
+        <input type="text" name="nick" class="input" placeholder="닉네임" id="userData_nick"/>
       </div>
-      <div class="col-1">
-        닉네임 :
-      </div>
-      <div class="col">
-        <textarea class="input" placeholder="닉네임" id="userData_nick"></textarea>
-      </div>
-      <div class="col-1">
-        비번 :
-      </div>
-      <div class="col">
-        <textarea class="input" placeholder="비밀번호" id="userData_pw"></textarea>
+      <div class="col-md-4 col-sm-12" style="padding-right: 0; margin-top: 20px;">
+        <input type="password" name="pw" class="input" placeholder="비밀번호" id="userData_pw"/>
       </div>
     </div>
     <div class="row">
-      <div class="col border-b">
-        <textarea class="" placeholder="제목" id="post_title"></textarea>
+      <div class="col" style="margin-bottom: 7px">
+        <textarea placeholder="제목" id="post_title" style="height: 5px"></textarea>
       </div>
     </div>
     <div class="row">
@@ -72,6 +63,9 @@
               <div class="col">
                 <span class="text-info">id: </span>
                 <span class="text-secondary">아이디</span>
+              </div>
+              <div class="col-3">
+                <button class="btn btn-primary">1</button>
               </div>
             </div>
           </div>

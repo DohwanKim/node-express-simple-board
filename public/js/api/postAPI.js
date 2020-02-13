@@ -1,6 +1,5 @@
 const BASE_URL = 'http://localhost:4000/';
 
-// TODO : 벡 제작 후 작동 연결 해 주기
 export const getPostData = (successFunc) => {
   const ajaxOptions = {
     url: BASE_URL + 'post/get',

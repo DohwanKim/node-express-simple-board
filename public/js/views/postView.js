@@ -8,12 +8,13 @@ postView.setup = function (el) {
   return this;
 };
 
+postView.eventNum = 0;
+
 postView.render = function (data) {
   this.el.innerHTML = this.getPostMarkUpData(data);
 };
 
 postView.getPostMarkUpData = function (data) {
-  console.log(data);
   let res = ``;
   for (let i=0; i<data.length; i++){
     let eachData = `
@@ -37,11 +38,14 @@ postView.getPostMarkUpData = function (data) {
         </div>
       </div>
       <div class="row">
-        <div class="col" style="">
-          <span class="text-info">게시글 고유번호: </span>
-          <span class="text-secondary" style="margin-right: 20px">${data[i].idPost}</span>
+        <div class="col num-a">
+          <span class="text-info"></span>
+          <span class="text-secondary num" style="margin-right: 20px">${data[i].idPost}</span>
           <span class="text-info">id: </span>
           <span class="text-secondary">${data[i].createdAt}</span>
+        </div>
+        <div class="col-4 text-right">
+          <button class="btn btn-danger delete" id="btn_${i+1}" style="height: 100%; margin-left: 10px">삭제</button>
         </div>
       </div>
       <div class="row">
@@ -51,10 +55,12 @@ postView.getPostMarkUpData = function (data) {
       </div>
     `;
 
+
     res += eachData;
   }
   console.log('render');
   return res;
 };
+
 
 export default postView;
