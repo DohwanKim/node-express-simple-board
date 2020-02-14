@@ -1,16 +1,20 @@
 import View from './View.js';
 
+// TODO : 여러 인자를 위한 뷰를 새로 만들어야 할듯
 const cancelBtnView = Object.create(View);
 
-cancelBtnView.setup = function (i) {
-  this.bindEvent(i);
+cancelBtnView.setup = function (el) {
+  this.init(el);
+
   return this
 };
 
-cancelBtnView.bindEvent = function (i) {
-  document.getElementById('btn_'+i).addEventListener('click', function () {
-    console.log(this.id);
-  })
+
+cancelBtnView.bindEachEvent = function (i) {
+  document.getElementById('btn_'+i).addEventListener('click', () => {
+    let res = '@delete_' + i;
+    this.emit(res);
+  });
 };
 
 

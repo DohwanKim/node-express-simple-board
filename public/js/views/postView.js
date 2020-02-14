@@ -58,7 +58,6 @@ postView.getPostMarkUpData = function (data) {
 
     res += eachData;
   }
-  console.log('render');
   return res;
 };
 

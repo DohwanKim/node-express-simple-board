@@ -16,6 +16,17 @@ export const getPostData = (successFunc) => {
   $.ajax(ajaxOptions);
 };
 
+export const getPostDataPromise = () => {
+  return new Promise(function (resolve, reject) {
+    $.get(BASE_URL + 'post/get', function (response) {
+      if (response) {
+        resolve(response);
+      }
+      reject(new Error("Request is failed"));
+    });
+  });
+};
+
 export const uploadPostData = (Data, successFunc) => {
   const ajaxOptions = {
     url: BASE_URL + 'post/create',
