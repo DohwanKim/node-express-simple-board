@@ -31,7 +31,7 @@ export const deletePostDataPromise = (data) => {
 export const checkPostPWPromise = (data) => {
   return new Promise(function (resolve, reject) {
     $.ajax({
-      url: BASE_URL + 'post/delete',
+      url: BASE_URL + 'post/check_pw',
       type: 'post',
       data: data,
       contentType: 'application/x-www-form-urlencoded',

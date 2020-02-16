@@ -79,11 +79,11 @@ export const updataPostData = async (idPost, data) => {
   console.log("update Done");
 };
 
-export const checkPWPostData = async (idPost, data) => {
-  Post.update({ postTitle: data.postData, postContents: data.postContents }, {
+export const checkPWPostData = async (idPost) => {
+  return Post.findOne({
+    attributes: ['postPw'],
     where: {
-      idPost: data.idPost
+      idPost: idPost
     }
   });
-  console.log("update Done");
 };

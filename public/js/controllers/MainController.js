@@ -4,7 +4,8 @@ import deleteBtnView from "../views/deleteBtnView.js";
 import postView from "../views/postView.js";
 import postModel from "../models/postModel.js"
 import postDeleteModel from "../models/postDeleteModel.js"
-import {getPostDataPromise, deletePostDataPromise, uploadPostDataPromise} from "../api/postAPI.js"
+import postCheckModel from "../models/postCheckModel.js";
+import {getPostDataPromise, deletePostDataPromise, uploadPostDataPromise, checkPostPWPromise} from "../api/postAPI.js"
 
 // TODO : 프론트 단에서 작성시 유효성 검사 해주기. (o)
 // TODO : 글 올렸을때 다시 렌더링 잘 되는지 (o)
@@ -38,22 +39,24 @@ export default {
     for (let i = 0; i < data.length; i++) {
       let postIndex = data[i].idPost;
       document.getElementById('btn_'+postIndex).addEventListener('click', () => {
-        let deletePrompt = prompt("해당 댓글의 비밀번호를 입력해주세요", "");
-        getPostDataPromise().then(res => {
-          data[i].pw
-        });
-        if(deletePrompt) {
-          postDeleteModel.setDeletePost(postIndex);
-          let res = postDeleteModel.getDeleteData();
-          deletePostDataPromise(res).then(res => {
-            getPostDataPromise().then(data => {
-              postView.render(data);
-              this.setDeleteButton(data);
+        let pwPrompt = prompt("해당 댓글의 비밀번호를 입력해주세요", "");
+
+        postCheckModel.setCheckPost(pwPrompt, postIndex);
+        checkPostPWPromise(postCheckModel.getCheckData()).then(res => {
+          if(res === 'confirm') {
+            postDeleteModel.setDeletePost(postIndex);
+            let res = postDeleteModel.getDeleteData();
+            deletePostDataPromise(res).then(res => {
+              getPostDataPromise().then(data => {
+                postView.render(data);
+                this.setDeleteButton(data);
+                alert('삭제되었습니다.');
+              });
             });
-          });
-        } else {
-          alert('비밀번호가 일치하지 않습니다.');
-        }
+          } else {
+            alert('비밀번호가 일치하지 않습니다.');
+          }
+        });
       });
     }
   },

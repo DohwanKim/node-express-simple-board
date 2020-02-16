@@ -1,5 +1,5 @@
 import {Router} from 'express';
-import {getPostData, createPostData, deletePostData, updataPostData} from "../models/postModel.js";
+import {getPostData, createPostData, deletePostData, updataPostData, checkPWPostData} from "../models/postModel.js";
 
 let router = Router();
 
@@ -29,10 +29,17 @@ router.post('/delete', async (req, res) => {
   res.send('delete');
 });
 
-router.post('/check-pw', async (req, res) => {
-  await deletePostData(req.body.idPost);
-  console.log('check');
-  res.send('check data');
+router.post('/check_pw', async (req, res) => {
+  let originPW = await checkPWPostData(req.body.idPost);
+
+  if(originPW.dataValues.postPw === req.body.pw) {
+    console.log('비밀번호 같음');
+    res.send('confirm');
+  } else {
+    console.log('비밀번호 다름');
+    res.send('denied');
+  }
+
 });
 
 export default router;

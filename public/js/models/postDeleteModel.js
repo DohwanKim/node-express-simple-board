@@ -1,6 +1,6 @@
 let postDeleteModel = {
   postDeleteData: {
-    idPost: 0
+    idPost: 0,
   }
 };
 
