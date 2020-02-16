@@ -78,3 +78,12 @@ export const updataPostData = async (idPost, data) => {
   });
   console.log("update Done");
 };
+
+export const checkPWPostData = async (idPost, data) => {
+  Post.update({ postTitle: data.postData, postContents: data.postContents }, {
+    where: {
+      idPost: data.idPost
+    }
+  });
+  console.log("update Done");
+};

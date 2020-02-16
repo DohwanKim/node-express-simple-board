@@ -45,7 +45,7 @@ postView.getPostMarkUpData = function (data) {
           <span class="text-secondary">${data[i].createdAt}</span>
         </div>
         <div class="col-4 text-right">
-          <button class="btn btn-danger delete" id="btn_${i+1}" style="height: 100%; margin-left: 10px">삭제</button>
+          <button class="btn btn-danger delete" id="btn_${data[i].idPost}" style="height: 100%; margin-left: 10px">삭제</button>
         </div>
       </div>
       <div class="row">

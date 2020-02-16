@@ -23,10 +23,16 @@ router.post('/update', async (req, res) => {
   res.send('update User');
 });
 
-router.get('/delete', async (req, res) => {
-  await deletePostData();
+router.post('/delete', async (req, res) => {
+  await deletePostData(req.body.idPost);
   console.log('delete');
   res.send('delete');
+});
+
+router.post('/check-pw', async (req, res) => {
+  await deletePostData(req.body.idPost);
+  console.log('check');
+  res.send('check data');
 });
 
 export default router;
