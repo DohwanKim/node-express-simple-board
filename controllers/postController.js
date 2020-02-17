@@ -1,5 +1,7 @@
 import {Router} from 'express';
-import {getPostData, createPostData, deletePostData, updataPostData, checkPWPostData} from "../models/postModel.js";
+// if want your local sql, use this
+// import {getPostData, createPostData, deletePostData, updataPostData, checkPWPostData} from "../models/postModel.js";
+import {getPostData, createPostData, deletePostData, updataPostData, checkPWPostData} from "../models/postLiteModel.js";
 
 let router = Router();
 

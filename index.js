@@ -5,10 +5,10 @@ import morgan from 'morgan';
 import chalk from 'chalk';
 import bodyParser from 'body-parser';
 import postController from './controllers/postController.js';
-import postLiteController from './controllers/postLiteController.js';
 import pageController from './controllers/pageController.js';
 
-const PORT = 4000;
+// const PORT = 4000;
+const PORT = 80; //HEROKU
 
 const app = express();
 
@@ -22,7 +22,6 @@ app.use(cors());
 app.use(morgan('dev'));
 
 app.use('/', pageController);
-// app.use('/post', postController);
-app.use('/post', postLiteController);
+app.use('/post', postController);
 
 app.listen(process.env.PORT || PORT, () => console.log(chalk.blueBright.bgBlack(`Example app listening on port ${PORT}!`)));

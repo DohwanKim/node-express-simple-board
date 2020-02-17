@@ -1,4 +1,5 @@
-const BASE_URL = 'http://localhost:4000/';
+// const BASE_URL = 'http://localhost:4000/';
+const BASE_URL = '';  //HEROKU
 
 export const getPostDataPromise = () => {
   return new Promise(function (resolve, reject) {

@@ -2,6 +2,21 @@ import { getSQLInfo } from "./secure.js";
 const Sequelize = require('sequelize');
 
 const data = getSQLInfo();
+/*
+  You need to make getSQLInfo() for connect your sql.
+
+  --getSQLInfo() Sample--
+  export const getSQLInfo = function () {
+    const data = {
+      name: 'your DB',
+      id: 'your root',
+      pw: 'your pw'
+    };
+
+    return data;
+  };
+  -----------------------
+*/
 
 const sequelize = new Sequelize(data.name, data.id, data.pw, {
   dialect: 'mysql',
