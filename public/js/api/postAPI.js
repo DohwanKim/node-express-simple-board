@@ -11,6 +11,23 @@ export const getPostDataPromise = () => {
   });
 };
 
+export const modifyDataPromise = (data) => {
+  return new Promise(function (resolve, reject) {
+    $.ajax({
+      url: BASE_URL + 'post/modify',
+      type: 'post',
+      data: data,
+      contentType: 'application/x-www-form-urlencoded',
+      success: function(response) {
+        if (response) {
+          resolve(response);
+        }
+        reject(new Error("Request is failed"));
+      }
+    })
+  });
+};
+
 export const deletePostDataPromise = (data) => {
   return new Promise(function (resolve, reject) {
     $.ajax({

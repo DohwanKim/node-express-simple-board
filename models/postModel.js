@@ -70,10 +70,10 @@ export const deletePostData = async (idPost) => {
   console.log("Delete Done");
 };
 
-export const updataPostData = async (idPost, data) => {
-  Post.update({ postTitle: data.postData, postContents: data.postContents }, {
+export const updataPostData = async (idPost, title, contents) => {
+  Post.update({ postTitle: title, postContents: contents }, {
     where: {
-      idPost: data.idPost
+      idPost: idPost
     }
   });
   console.log("update Done");

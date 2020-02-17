@@ -20,7 +20,8 @@ postView.getPostMarkUpData = function (data) {
     let eachData = `
       <div class="row border-bottom">
         <div class="col" style="margin-bottom: 5px">
-          <h2>${data[i].postTitle}</h2>
+          <textarea placeholder="${data[i].postTitle}" id="post_modify_title_${data[i].idPost}" style="height: 3px; display: none;">${data[i].postTitle}</textarea>
+          <h2 id="title_${data[i].idPost}">${data[i].postTitle}</h2>
         </div>
         <div class="col-3">
           <div class="row">
@@ -45,16 +46,19 @@ postView.getPostMarkUpData = function (data) {
           <span class="text-secondary">${data[i].createdAt}</span>
         </div>
         <div class="col-4 text-right">
-          <button class="btn btn-danger delete" id="btn_${data[i].idPost}" style="height: 100%; margin-left: 10px">삭제</button>
+          <button class="btn btn-info modify" id="btn_m_${data[i].idPost}">수정</button>
+          <button class="btn btn-danger delete" id="btn_${data[i].idPost}">삭제</button>
+          <button class="btn btn-info modify" id="btn_m_c_${data[i].idPost}" style="display: none">수정하기</button>
+          <button class="btn btn-danger delete" id="btn_c_${data[i].idPost}" style="display: none">수정취소</button>
         </div>
       </div>
       <div class="row">
         <div class="col" style="margin-bottom: 30px">
-          ${data[i].postContents}
+          <textarea placeholder="${data[i].postContents}" id="contents_modify_${data[i].idPost}" style="height: 3px; display: none">${data[i].postContents}</textarea>
+          <span id="contents_${data[i].idPost}">${data[i].postContents}</span>
         </div>
       </div>
     `;
-
 
     res += eachData;
   }

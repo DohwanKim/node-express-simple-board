@@ -17,9 +17,9 @@ router.post('/create', async (req, res) => {
   res.send('created');
 });
 
-router.post('/update', async (req, res) => {
-  await updataPostData();
-  console.log('update');
+router.post('/modify', async (req, res) => {
+  await updataPostData(req.body.idPost, req.body.title, req.body.contents);
+  console.log(req.body);
   res.send('update User');
 });
 
