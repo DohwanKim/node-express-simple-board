@@ -1,22 +1,11 @@
-import { getSQLInfo } from "./secure.js";
 const Sequelize = require('sequelize');
 
-const data = getSQLInfo();
-
-const sequelize = new Sequelize(data.name, data.id, data.pw, {
-  dialect: 'mysql',
-  host: 'localhost',
-  port: '3306'
+const sequelize = new Sequelize({
+  dialect: 'sqlite',
+  storage: './db-dev.sqlite',
+  operatorsAliases: Sequelize.Op,
+  logging: console.log
 });
-
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Connection has been established successfully.');
-  })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err);
-  });
 
 const Post = sequelize.define('Post', {
   idPost: {
@@ -49,7 +38,7 @@ const Post = sequelize.define('Post', {
   modelName: 'Post'
 });
 
-sequelize.sync();
+Post.sync({ force: true });
 
 export const getPostData = async () => {
   return Post.findAll();

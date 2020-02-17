@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simple Notice Board</title>
   <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
           crossorigin="anonymous"></script>
@@ -17,67 +18,79 @@
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
+<div class="wrapper">
   <div class="container">
-    <div class="row" style="margin-bottom: 20px">
-      <div class="col-md-4 col-sm-12" style="padding-left: 0; margin-top: 20px;">
-        <input type="text" name="id" class="input" placeholder="아이디" id="userData_id"/>
-      </div>
-      <div class="col-md-4 col-sm-12" style="padding: 0; margin-top: 20px;">
-        <input type="text" name="nick" class="input" placeholder="닉네임" id="userData_nick"/>
-      </div>
-      <div class="col-md-4 col-sm-12" style="padding-right: 0; margin-top: 20px;">
-        <input type="password" name="pw" class="input" placeholder="비밀번호" id="userData_pw"/>
-      </div>
-    </div>
     <div class="row">
-      <div class="col" style="margin-bottom: 7px">
-        <textarea placeholder="제목" id="post_title" style="height: 5px"></textarea>
+      <div class="col text-center banner" style="margin-top: 30px;">
+        <span class="banner-1">Simple Notice Board</span><br><span class="banner-2">by Dohwan Kim</span>
       </div>
     </div>
-    <div class="row">
-      <div class="col">
-        <textarea class="" placeholder="글내용" id="post_contents"></textarea>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col text-right" style="margin-top: 10px">
-        <button type="button" class="btn btn-primary" id="post_summit">저장</button>
-        <button type="button" class="btn btn-secondary" id="post_cancel">취소</button>
-      </div>
-    </div>
-    <div class="row" style="margin-top: 20px">
-      <!-- 작성글 나오는 곳-->
-      <div class="col" id="post_area">
-<!--        <div class="row border-bottom">-->
-<!--          <div class="col" style="margin-bottom: 5px">-->
-<!--            <h2>제목</h2>-->
-<!--          </div>-->
-<!--          <div class="col-3">-->
-<!--            <div class="row">-->
-<!--              <div class="col">-->
-<!--                <span class="text-primary">nick: </span>-->
-<!--                <span class="text-secondary">닉네임</span>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--            <div class="row">-->
-<!--              <div class="col">-->
-<!--                <span class="text-info">id: </span>-->
-<!--                <span class="text-secondary">아이디</span>-->
-<!--              </div>-->
-<!--              <div class="col-3">-->
-<!--                <button class="btn btn-primary">1</button>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div class="row">-->
-<!--          <div class="col" style="margin-bottom: 30px">-->
-<!--            내용-->
-<!--          </div>-->
+    <div class="row top-row">
+      <div class="col top">
+        <div class="row" style="margin-top: 10px; margin-bottom: 10px">
+          <div class="col-md-4 col-sm-12 input-id">
+            <input type="text" name="id" class="input-form shadow" placeholder="아이디" id="userData_id"/>
+          </div>
+          <div class="col-md-4 col-sm-12 input-nick">
+            <input type="text" name="nick" class="input-form shadow" placeholder="닉네임" id="userData_nick"/>
+          </div>
+          <div class="col-md-4 col-sm-12 input-pw">
+            <input type="password" name="pw" class="input-form shadow" placeholder="비밀번호" id="userData_pw"/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col top-text-title" style="margin-bottom: 7px">
+            <textarea placeholder="제목" id="post_title" class="shadow text-area" style="height: 5px"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col top-text-title">
+            <textarea class="shadow text-area" placeholder="글내용" id="post_contents"></textarea>
+          </div>
+        </div>
+        <div class="row" style="margin-top: 4px; margin-bottom: 30px">
+          <div class="col text-right top-text-title" style="margin-top: 7px">
+            <button type="button" class="btn-hover color-1 shadow top-button" id="post_summit">저장</button>
+            <button type="button" class="btn-hover color-7 shadow top-button" id="post_cancel">취소</button>
+          </div>
         </div>
       </div>
     </div>
+
+    <div class="row" style="margin-top: 20px">
+      <!-- 작성글 나오는 곳-->
+      <div class="col" id="post_area" style="margin-bottom: 40px">
+
+        <!--        <div class="row border-bottom">-->
+        <!--          <div class="col" style="margin-bottom: 5px">-->
+        <!--            <h2>제목</h2>-->
+        <!--          </div>-->
+        <!--          <div class="col-3">-->
+        <!--            <div class="row">-->
+        <!--              <div class="col">-->
+        <!--                <span class="text-primary">nick: </span>-->
+        <!--                <span class="text-secondary">닉네임</span>-->
+        <!--              </div>-->
+        <!--            </div>-->
+        <!--            <div class="row">-->
+        <!--              <div class="col">-->
+        <!--                <span class="text-info">id: </span>-->
+        <!--                <span class="text-secondary">아이디</span>-->
+        <!--              </div>-->
+        <!--              <div class="col-3">-->
+        <!--                <button class="btn btn-primary">1</button>-->
+        <!--              </div>-->
+        <!--            </div>-->
+        <!--          </div>-->
+        <!--        </div>-->
+        <!--        <div class="row">-->
+        <!--          <div class="col" style="margin-bottom: 30px">-->
+        <!--            내용-->
+        <!--          </div>-->
+      </div>
+    </div>
   </div>
+</div>
   <script type="module" src="js/App.js"></script>
 </body>
 </html>

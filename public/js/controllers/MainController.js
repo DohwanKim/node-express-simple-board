@@ -1,6 +1,5 @@
 import submitBtnView from "../views/submitBtnView.js";
 import cancelBtnView from "../views/cancelBtnView.js";
-import deleteBtnView from "../views/deleteBtnView.js";
 import modifyBtnViewToggle from "../views/modifyBtnViewToggle.js";
 import postView from "../views/postView.js";
 import postModel from "../models/postModel.js"
@@ -8,12 +7,6 @@ import postDeleteModel from "../models/postDeleteModel.js"
 import postCheckModel from "../models/postCheckModel.js";
 import postModifyModel from "../models/postModifyModel.js";
 import {getPostDataPromise, deletePostDataPromise, uploadPostDataPromise, checkPostPWPromise, modifyDataPromise} from "../api/postAPI.js"
-
-// TODO : 프론트 단에서 작성시 유효성 검사 해주기. (o)
-// TODO : 글 올렸을때 다시 렌더링 잘 되는지 (o)
-// TODO : 삭제 기능 -> 해당 글의 비밀번호 일치 검사 (o)
-// TODO : 수정 기능 -> 해당 글의 비밀번호 일치 검사 (x)
-// TODO : 될 수 있으면 jest로 프론트 테스트 작성 까지 ()
 
 export default {
   init() {
@@ -108,6 +101,7 @@ export default {
       cancelBtnView.clear();
       uploadPostDataPromise(postModel.getData()).then(res => {
         getPostDataPromise().then(data => {
+          alert('작성완료');
           postView.render(data);
           this.setRenderedButton(data);
         })
