@@ -6,7 +6,7 @@ It is also output without any problems on mobile devices.
 
 ![](header.png)
 
-##Sample (Heroku auto deploy)
+## Sample (Heroku auto deploy)
 https://node-express-simple-board.herokuapp.com/
 
 ## Installation
